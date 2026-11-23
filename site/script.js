@@ -44,10 +44,19 @@
     if (msg) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid");
   }
 
-  /* Envia para a planilha (Google Apps Script). Sem URL = modo demonstração. */
+  /* Envia para o Notion (pela função do Netlify). Sem endereço = modo demonstração. */
   function sendToEndpoint(data) {
-    if (!KA.formEndpoint) return Promise.resolve({ demo: true });
-    return fetch(KA.formEndpoint, {
+    var url = KA.formEndpoint;
+    if (!url || !/^https?:$/.test(location.protocol)) return Promise.resolve({ demo: true });
+    if (url.charAt(0) === "/") {
+      return fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) { if (!r.ok) throw new Error("falhou"); return { ok: true }; });
+    }
+    // Endereço externo (ex.: Google Apps Script): envio sem confirmação de resposta.
+    return fetch(url, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -290,7 +299,8 @@
         tamanho: $("#vipTam").value,
         consentimento: "sim",
         data: new Date().toISOString(),
-        origem: "site"
+        origem: "site",
+        site: $('input[name="site"]', form).value
       };
       var btn = $('button[type="submit"]', form);
       btn.disabled = true;

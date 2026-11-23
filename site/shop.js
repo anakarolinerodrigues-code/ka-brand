@@ -446,7 +446,8 @@
       endereco: o.endereco,
       itens: lista.map(function (i) { return i.qtd + "x " + i.nome + " (" + i.tam + ")"; }).join("; "),
       total: t.total === null ? "a confirmar" : t.total.toFixed(2),
-      obs: o.obs
+      obs: o.obs,
+      site: $('input[name="site"]', form).value
     };
 
     var btn = $("#placeOrder");
@@ -464,7 +465,7 @@
       $("#orderNumber").textContent = o.pedido;
       $("#orderWhats").href = U.whatsappLink(orderMessage(o));
       $("#orderSaveNote").textContent =
-        how === "ok" ? "Uma cópia do pedido foi enviada para a loja." :
+        how === "ok" ? "A loja já recebeu uma cópia do seu pedido." :
         how === "falhou" ? "Não conseguimos enviar a cópia agora. Envie pelo WhatsApp para garantir." :
         savedLocal ? "Uma cópia ficou salva neste aparelho." : "";
       cart = [];

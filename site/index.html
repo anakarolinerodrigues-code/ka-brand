@@ -247,6 +247,7 @@
         <p class="vip__lead reveal">Quem está na lista recebe o catálogo antes, escolhe primeiro e ganha condições especiais de pré-venda. <span class="edit-tag edit-tag--light">editável</span></p>
 
         <form class="form form--light reveal" id="vipForm" novalidate>
+          <input class="hp" type="text" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field">
             <label for="vipNome">Seu nome</label>
             <input id="vipNome" name="nome" type="text" autocomplete="name" required>
@@ -418,6 +419,7 @@
 
     <!-- passo 2: entrega e dados -->
     <form class="cart-step form" data-step="checkout" id="checkoutForm" novalidate hidden>
+            <input class="hp" type="text" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="button" class="link-btn back" id="backToCart">← Voltar para a sacola</button>
 
       <fieldset class="field">

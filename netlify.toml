@@ -1,0 +1,16 @@
+# Configuração do Netlify (lida automaticamente ao conectar o GitHub).
+[build]
+  publish = "site"
+  functions = "netlify/functions"
+
+# Endereço curto que o site usa para gravar no Notion.
+[[redirects]]
+  from = "/api/registrar"
+  to = "/.netlify/functions/registrar"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

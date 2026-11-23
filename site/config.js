@@ -30,9 +30,10 @@ window.KA = {
   mensagemWhatsapp: "Oi, KA Brand! ✦ Vim pelo site e quero saber mais sobre a pré-venda.",
 
   /* ---------- ONDE OS DADOS SÃO GUARDADOS ---------- */
-  // Cole aqui a URL do Google Apps Script (veja LEIAME.md, passo "Planilha").
+  // "/api/registrar" grava a lista VIP e os pedidos nas tabelas do Notion
+  // (funciona quando o site está publicado no Netlify, ligado ao GitHub; veja LEIAME.md).
   // Vazio = modo demonstração (os dados ficam só no navegador de quem preencheu).
-  formEndpoint: "",
+  formEndpoint: "/api/registrar",
 
   /* ---------- CATÁLOGO ---------- */
   // true = mostra o aviso "peças de exemplo". Troque para false quando
