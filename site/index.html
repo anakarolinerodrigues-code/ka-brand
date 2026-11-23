@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KA Brand · Ouse brilhar.</title>
+  <meta name="description" content="KA Brand: moda feminina e acessórios em Boa Vista/RR, com envio para Roraima e todo o Brasil. Entre na lista VIP da pré-venda.">
+  <meta name="theme-color" content="#6E1F31">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KA Brand · Ouse brilhar.">
+  <meta property="og:description" content="Moda feminina e acessórios. Pré-venda aberta para a lista VIP.">
+  <meta property="og:image" content="og-image.svg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============ ENTRADA ANIMADA ============ -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__inner">
+      <svg class="intro__mono" viewBox="0 0 200 120" role="img" aria-label="KA">
+        <!-- K -->
+        <path class="draw" d="M30 18 V102" />
+        <path class="draw" d="M30 62 L82 18" />
+        <path class="draw" d="M44 50 L86 102" />
+        <!-- A -->
+        <path class="draw" d="M104 102 L138 18 L172 102" />
+        <path class="draw" d="M117 72 H159" />
+      </svg>
+      <p class="intro__brand">BRAND</p>
+      <p class="intro__slogan">Ouse brilhar.</p>
+    </div>
+    <button class="intro__skip" type="button" id="introSkip">Pular</button>
+  </div>
+
+  <!-- ============ TOPO ============ -->
+  <header class="topbar" id="topbar">
+    <button class="icon-btn" type="button" id="menuBtn" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+
+    <a class="logo logo--small" href="#inicio" aria-label="KA Brand, início">
+      <span class="logo__ka">KA</span>
+      <span class="logo__brand">BRAND</span>
+    </a>
+
+    <nav class="topnav" aria-label="Principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-funciona">Pré-venda</a>
+      <a href="#vip">Lista VIP</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+
+    <button class="icon-btn cart-btn" type="button" id="cartBtn" aria-label="Abrir minha sacola" aria-controls="cart">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="cart-count" data-cart-count hidden>0</span>
+    </button>
+  </header>
+
+  <!-- ============ MENU (GAVETA ESQUERDA) ============ -->
+  <div class="overlay" data-overlay hidden></div>
+  <aside class="drawer drawer--left" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="drawer__head">
+      <span class="logo logo--small"><span class="logo__ka">KA</span><span class="logo__brand">BRAND</span></span>
+      <button class="icon-btn" type="button" data-close aria-label="Fechar menu">✕</button>
+    </div>
+    <nav class="drawer__nav" aria-label="Categorias">
+      <p class="label">Comprar</p>
+      <a href="#catalogo" data-cat-link="todos">Ver tudo</a>
+      <a href="#catalogo" data-cat-link="vestidos">Vestidos</a>
+      <a href="#catalogo" data-cat-link="conjuntos">Conjuntos</a>
+      <a href="#catalogo" data-cat-link="shorts">Shorts</a>
+      <a href="#catalogo" data-cat-link="blusas">Blusas</a>
+      <p class="label">A marca</p>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#como-funciona">Como funciona a pré-venda</a>
+      <a href="#vip">Lista VIP</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#faq">Perguntas frequentes</a>
+      <button type="button" class="drawer__cart" data-open-cart>Minha sacola <span data-cart-count-text>(0)</span></button>
+    </nav>
+    <p class="drawer__foot">✦ Ouse brilhar.</p>
+  </aside>
+
+  <main id="conteudo">
+    <!-- ============ HERO ============ -->
+    <section class="hero pattern" id="inicio">
+      <div class="hero__inner">
+        <p class="label label--light reveal">Pré-venda · <span data-ka="cidade">Boa Vista/RR</span></p>
+        <h1 class="logo logo--hero reveal">
+          <span class="logo__ka">KA</span>
+          <span class="logo__brand">BRAND</span>
+        </h1>
+        <p class="hero__slogan reveal">Ouse brilhar.</p>
+        <p class="hero__text reveal">Moda feminina e acessórios para quem não tem medo de ser vista. As primeiras peças estão chegando e quem está na lista VIP escolhe antes.</p>
+        <a class="btn btn--light reveal" href="#vip">Quero entrar na lista VIP</a>
+
+        <div class="countdown reveal" id="countdown" hidden>
+          <p class="countdown__title">A pré-venda abre em</p>
+          <div class="countdown__grid" role="timer" aria-live="off">
+            <div><span data-cd="d">00</span><small>dias</small></div>
+            <div><span data-cd="h">00</span><small>horas</small></div>
+            <div><span data-cd="m">00</span><small>min</small></div>
+            <div><span data-cd="s">00</span><small>seg</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="sealPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text><textPath href="#sealPath">BRAND ✦ OUSE BRILHAR ✦ @KABRANDRR ✦ BRAND ✦ OUSE BRILHAR ✦</textPath></text>
+        </svg>
+        <span class="seal__ka">KA</span>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="section manifesto" id="manifesto">
+      <div class="wrap narrow">
+        <p class="label reveal">✦ Manifesto</p>
+        <h2 class="title reveal">Para a mulher que <em>escolhe</em> ser notada.</h2>
+        <p class="reveal">A KA Brand nasceu em Boa Vista com uma ideia simples: roupa bonita muda a forma como a gente entra num lugar. Peças femininas, bem escolhidas, para os seus dias comuns e para as suas noites inesquecíveis.</p>
+        <p class="reveal">Sem exagero, sem regra. Só você, mais confiante.</p>
+        <p class="manifesto__sign reveal">Ouse brilhar.</p>
+      </div>
+    </section>
+
+    <!-- ============ O QUE VEM POR AÍ ============ -->
+    <section class="section section--rosa" id="novidades">
+      <div class="wrap">
+        <p class="label reveal">✦ O que vem por aí</p>
+        <h2 class="title reveal">A primeira coleção</h2>
+        <div class="teasers">
+          <a class="teaser reveal" href="#catalogo" data-cat-link="vestidos">
+            <span class="teaser__num">01</span>
+            <h3>Vestidos</h3>
+            <p>Do midi elegante ao curto que brilha.</p>
+          </a>
+          <a class="teaser reveal" href="#catalogo" data-cat-link="conjuntos">
+            <span class="teaser__num">02</span>
+            <h3>Conjuntos</h3>
+            <p>Combinação pronta, look resolvido.</p>
+          </a>
+          <a class="teaser reveal" href="#vip">
+            <span class="teaser__num">03</span>
+            <h3>Acessórios</h3>
+            <p>O detalhe que faz o look ser seu.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="section catalog" id="catalogo">
+      <div class="wrap">
+        <p class="label">✦ Pré-venda</p>
+        <h2 class="title">Catálogo</h2>
+        <p class="catalog__note" id="catalogNote" hidden>Peças de exemplo enquanto as fotos oficiais não chegam. <span class="edit-tag">editável</span></p>
+
+        <div class="tabs" role="tablist" aria-label="Categorias" id="catTabs"></div>
+
+        <div class="toolbar">
+          <button type="button" class="btn-line" id="filterBtn" aria-expanded="false" aria-controls="filterBox">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Filtrar <span id="filterCount"></span>
+          </button>
+          <label class="sort">
+            <span class="sr-only">Ordenar por</span>
+            <select id="sortSelect">
+              <option value="relevancia">Mais relevantes</option>
+              <option value="menor">Menor preço</option>
+              <option value="maior">Maior preço</option>
+              <option value="az">A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filterbox" id="filterBox" hidden>
+          <p class="label">Tamanho</p>
+          <div class="chips" id="sizeChips"></div>
+          <button type="button" class="link-btn" id="clearFilter">Limpar filtro</button>
+        </div>
+
+        <p class="catalog__count" id="catalogCount" aria-live="polite"></p>
+        <div class="grid" id="productGrid"></div>
+        <p class="catalog__empty" id="catalogEmpty" hidden>Nenhuma peça com esse filtro ainda. Que tal entrar na lista VIP e ser avisada das novidades?</p>
+      </div>
+    </section>
+
+    <!-- ============ PROVADOR VIRTUAL ============ -->
+    <section class="section section--vinho fitting" id="provador">
+      <div class="wrap fitting__inner">
+        <svg class="fitting__art reveal" viewBox="0 0 240 200" aria-hidden="true">
+          <!-- espelho -->
+          <rect x="140" y="20" width="80" height="160" rx="40" />
+          <path d="M160 60 q20 -20 40 0" />
+          <!-- cabide -->
+          <path d="M70 40 a10 10 0 1 1 10 10 v10" />
+          <path d="M80 60 L20 100 H140 Z" />
+          <!-- vestido -->
+          <path d="M60 100 l-10 70 h60 l-10 -70" />
+          <text x="186" y="112" text-anchor="middle">✦</text>
+        </svg>
+        <div class="reveal">
+          <p class="label label--light">✦ Provador virtual</p>
+          <h2 class="title title--light">Em breve, suas novas favoritas.</h2>
+          <p>Logo você vai poder ver cada peça em detalhes, com medidas e dicas de combinação. Enquanto isso, chame a gente no WhatsApp para tirar dúvida de tamanho.</p>
+          <a class="btn btn--outline-light" href="#" data-whatsapp>Tirar dúvida de tamanho</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <p class="label reveal">✦ Pré-venda</p>
+        <h2 class="title reveal">Como funciona</h2>
+        <ol class="steps">
+          <li class="reveal"><span>1</span><h3>Escolha</h3><p>Coloque as peças que você ama na sua sacola e escolha o tamanho.</p></li>
+          <li class="reveal"><span>2</span><h3>Envie o pedido</h3><p>Preencha seus dados e mande o pedido pronto pelo WhatsApp.</p></li>
+          <li class="reveal"><span>3</span><h3>Confirme</h3><p>A loja confirma estoque, frete e envia o Pix. Nada é cobrado automaticamente.</p></li>
+          <li class="reveal"><span>4</span><h3>Receba</h3><p>Quando as peças chegarem, entregamos em Boa Vista ou enviamos para você.</p></li>
+        </ol>
+        <p class="note">Prazo de chegada das peças: a definir <span class="edit-tag">editável</span></p>
+      </div>
+    </section>
+
+    <!-- ============ LISTA VIP ============ -->
+    <section class="section section--marsala pattern" id="vip">
+      <div class="wrap narrow">
+        <p class="label label--light reveal">✦ Lista VIP</p>
+        <h2 class="title title--light reveal">Seja a primeira a saber.</h2>
+        <p class="vip__lead reveal">Quem está na lista recebe o catálogo antes, escolhe primeiro e ganha condições especiais de pré-venda. <span class="edit-tag edit-tag--light">editável</span></p>
+
+        <form class="form form--light reveal" id="vipForm" novalidate>
+          <div class="field">
+            <label for="vipNome">Seu nome</label>
+            <input id="vipNome" name="nome" type="text" autocomplete="name" required>
+            <small class="error" data-error-for="vipNome"></small>
+          </div>
+          <div class="field">
+            <label for="vipWhats">WhatsApp com DDD</label>
+            <input id="vipWhats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(95) 99999-9999" required>
+            <small class="error" data-error-for="vipWhats"></small>
+          </div>
+          <div class="field">
+            <label for="vipEmail">E-mail</label>
+            <input id="vipEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
+            <small class="error" data-error-for="vipEmail"></small>
+          </div>
+          <fieldset class="field">
+            <legend>O que você mais quer ver?</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="interesses" value="Vestidos"> Vestidos</label>
+              <label><input type="checkbox" name="interesses" value="Conjuntos"> Conjuntos</label>
+              <label><input type="checkbox" name="interesses" value="Shorts"> Shorts</label>
+              <label><input type="checkbox" name="interesses" value="Blusas"> Blusas</label>
+              <label><input type="checkbox" name="interesses" value="Acessórios"> Acessórios</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="vipTam">Seu tamanho</label>
+            <select id="vipTam" name="tamanho">
+              <option value="">Prefiro não dizer</option>
+              <option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option>
+            </select>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consentimento" id="vipConsent" required>
+            <span>Aceito receber novidades da KA Brand por WhatsApp e e-mail. Posso sair da lista quando quiser. Veja a <a href="legal.html#privacidade">política de privacidade</a>.</span>
+          </label>
+          <small class="error" data-error-for="vipConsent"></small>
+          <button class="btn btn--light btn--block" type="submit">Entrar na lista VIP ✦</button>
+          <p class="form__status" id="vipStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="vip__done" id="vipDone" hidden>
+          <p class="vip__done-title">Você está na lista. ✦</p>
+          <p>Vamos te avisar antes de todo mundo. Quer garantir? Fale com a gente no WhatsApp.</p>
+          <a class="btn btn--light" href="#" data-whatsapp>Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTAGRAM ============ -->
+    <section class="section section--rosa insta" id="instagram">
+      <div class="wrap narrow center">
+        <p class="label reveal">✦ Instagram</p>
+        <h2 class="title reveal">Marcou, ganhou.</h2>
+        <p class="reveal">Poste seu look KA Brand, marque <strong data-ka="instagramAt">@kabrandrr</strong> e ganhe <strong>10% de desconto</strong> na próxima compra. <span class="edit-tag">editável</span></p>
+        <a class="btn reveal" href="#" data-instagram target="_blank" rel="noopener">Seguir @kabrandrr</a>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="wrap narrow">
+        <p class="label reveal">✦ Dúvidas</p>
+        <h2 class="title reveal">Perguntas frequentes</h2>
+        <div class="faq">
+          <details class="reveal">
+            <summary>O que é a pré-venda?</summary>
+            <p>É a chance de garantir suas peças antes de chegarem. Você faz o pedido, a loja confirma pelo WhatsApp e, quando as peças chegarem, entregamos ou enviamos para você.</p>
+          </details>
+          <details class="reveal">
+            <summary>Quando eu pago?</summary>
+            <p>Só depois que a loja confirmar o seu pedido pelo WhatsApp. O pagamento é por Pix, combinado diretamente com a gente. O site não cobra nada automaticamente.</p>
+          </details>
+          <details class="reveal">
+            <summary>Vocês entregam fora de Boa Vista?</summary>
+            <p>Sim! Enviamos para o interior de Roraima e para todo o Brasil. O valor do frete é informado pela loja antes do pagamento.</p>
+          </details>
+          <details class="reveal">
+            <summary>Como sei meu tamanho?</summary>
+            <p>Chame a gente no WhatsApp com suas medidas (busto, cintura e quadril) e ajudamos você a escolher.</p>
+          </details>
+          <details class="reveal">
+            <summary>Posso trocar?</summary>
+            <p>Sim, conforme a nossa <a href="legal.html#trocas">política de trocas</a>. <span class="edit-tag">editável</span></p>
+          </details>
+          <details class="reveal">
+            <summary>Como saio da lista VIP?</summary>
+            <p>É só mandar uma mensagem no WhatsApp ou um e-mail para <a href="#" data-email>contato@kabrand.com.br</a> pedindo para sair.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="logo logo--footer"><span class="logo__ka">KA</span><span class="logo__brand">BRAND</span></div>
+      <p class="footer__slogan">Ouse brilhar.</p>
+      <ul class="footer__links">
+        <li><a href="#" data-instagram target="_blank" rel="noopener" data-ka="instagramAt">@kabrandrr</a></li>
+        <li><a href="#" data-whatsapp>WhatsApp</a></li>
+        <li><a href="#" data-email data-ka="email">contato@kabrand.com.br</a></li>
+      </ul>
+      <ul class="footer__links footer__links--small">
+        <li><a href="legal.html#trocas">Trocas e devoluções</a></li>
+        <li><a href="legal.html#privacidade">Privacidade (LGPD)</a></li>
+        <li><a href="legal.html#termos">Termos da pré-venda</a></li>
+      </ul>
+      <p class="footer__legal">KA Brand · <span data-ka="dona">Ana Karoline</span> · MEI · CNPJ <span data-ka="cnpj">69.857.792/0001-11</span><br>Loja online · <span data-ka="cidade">Boa Vista/RR</span> · Envio para Roraima e todo o Brasil</p>
+      <p class="footer__legal">© <span id="year">2026</span> KA Brand. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ============ FLUTUANTES ============ -->
+  <a class="wa-float" href="#" data-whatsapp aria-label="Falar com a KA Brand no WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7a.6.6 0 0 0 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.3 3.4 14.7 14.7 0 0 0 5.7 5c2.1.9 2.9 1 4 .8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.2-.3-.3-.6-.4Z"/></svg>
+  </a>
+
+  <button type="button" class="cartbar" id="cartBar" data-open-cart hidden>
+    <span>Ver minha sacola</span>
+    <span class="cartbar__info"><span data-cart-count-text>(0)</span> <span data-cart-total-text></span></span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ============ JANELA DA PEÇA ============ -->
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmName" hidden>
+    <div class="modal__box">
+      <button class="icon-btn modal__close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="modal__media" id="pmMedia"></div>
+      <div class="modal__body">
+        <span class="badge">Pré-venda</span>
+        <h3 class="modal__title" id="pmName"></h3>
+        <p class="modal__price" id="pmPrice"></p>
+        <p class="modal__desc" id="pmDesc"></p>
+        <p class="label">Tamanho</p>
+        <div class="chips chips--sizes" id="pmSizes" role="radiogroup" aria-label="Escolha o tamanho"></div>
+        <small class="error" id="pmSizeError"></small>
+        <button class="btn btn--block" type="button" id="pmAdd">Adicionar à minha sacola ✦</button>
+        <a class="link-btn" href="#" id="pmAsk">Dúvida de tamanho? Fale no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SACOLA (GAVETA DIREITA) ============ -->
+  <aside class="drawer drawer--right" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+    <div class="drawer__head">
+      <h2 class="drawer__title" id="cartTitle">Minha sacola</h2>
+      <button class="icon-btn" type="button" data-close aria-label="Fechar sacola">✕</button>
+    </div>
+
+    <!-- passo 1: itens -->
+    <div class="cart-step" data-step="itens">
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty">
+        <p>Sua sacola está vazia.</p>
+        <a class="btn" href="#catalogo" data-close-go>Ver catálogo</a>
+      </div>
+      <div class="cart-foot" id="cartFoot">
+        <div class="totals">
+          <p><span>Subtotal</span><strong id="cartSubtotal">—</strong></p>
+          <p class="muted">Frete calculado na próxima etapa.</p>
+        </div>
+        <button class="btn btn--block" type="button" id="toCheckout">Finalizar pedido</button>
+        <p class="muted small">Pagamento por Pix, combinado com a loja depois da confirmação. Nada é cobrado agora.</p>
+      </div>
+    </div>
+
+    <!-- passo 2: entrega e dados -->
+    <form class="cart-step form" data-step="checkout" id="checkoutForm" novalidate hidden>
+      <button type="button" class="link-btn back" id="backToCart">← Voltar para a sacola</button>
+
+      <fieldset class="field">
+        <legend>Entrega</legend>
+        <div class="options" id="shipOptions"></div>
+      </fieldset>
+
+      <div id="addressBox" hidden>
+        <div class="field">
+          <label for="coCep">CEP</label>
+          <input id="coCep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="69300-000" maxlength="9">
+          <small class="hint" id="cepHint"></small>
+        </div>
+        <div class="field">
+          <label for="coRua">Rua / avenida</label>
+          <input id="coRua" name="rua" type="text" autocomplete="address-line1">
+          <small class="error" data-error-for="coRua"></small>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="coNum">Número</label>
+            <input id="coNum" name="numero" type="text" inputmode="numeric">
+            <small class="error" data-error-for="coNum"></small>
+          </div>
+          <div class="field">
+            <label for="coComp">Complemento</label>
+            <input id="coComp" name="complemento" type="text" autocomplete="address-line2">
+          </div>
+        </div>
+        <div class="field">
+          <label for="coBairro">Bairro</label>
+          <input id="coBairro" name="bairro" type="text">
+          <small class="error" data-error-for="coBairro"></small>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="coCidade">Cidade</label>
+            <input id="coCidade" name="cidade" type="text" autocomplete="address-level2">
+            <small class="error" data-error-for="coCidade"></small>
+          </div>
+          <div class="field field--uf">
+            <label for="coUf">UF</label>
+            <input id="coUf" name="uf" type="text" maxlength="2" autocomplete="address-level1">
+          </div>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend>Seus dados</legend>
+        <div class="field">
+          <label for="coNome">Nome completo</label>
+          <input id="coNome" name="nome" type="text" autocomplete="name" required>
+          <small class="error" data-error-for="coNome"></small>
+        </div>
+        <div class="field">
+          <label for="coWhats">WhatsApp com DDD</label>
+          <input id="coWhats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(95) 99999-9999" required>
+          <small class="error" data-error-for="coWhats"></small>
+        </div>
+        <div class="field">
+          <label for="coEmail">E-mail</label>
+          <input id="coEmail" name="email" type="email" inputmode="email" autocomplete="email" required>
+          <small class="error" data-error-for="coEmail"></small>
+        </div>
+        <div class="field">
+          <label for="coObs">Observações (opcional)</label>
+          <textarea id="coObs" name="obs" rows="2" placeholder="Ex.: melhor horário para entrega"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="totals" id="checkoutTotals"></div>
+
+      <label class="consent">
+        <input type="checkbox" id="coConsent" required>
+        <span>Li e aceito os <a href="legal.html#termos" target="_blank">termos da pré-venda</a> e a <a href="legal.html#privacidade" target="_blank">política de privacidade</a>.</span>
+      </label>
+      <small class="error" data-error-for="coConsent"></small>
+
+      <button class="btn btn--block" type="submit" id="placeOrder">Confirmar pedido ✦</button>
+      <p class="muted small">O pedido só é confirmado depois que a loja responder no WhatsApp com estoque, frete e Pix.</p>
+    </form>
+
+    <!-- passo 3: pedido feito -->
+    <div class="cart-step done" data-step="feito" hidden>
+      <p class="done__star">✦</p>
+      <h3 class="done__title">Pedido registrado!</h3>
+      <p>Número do pedido: <strong id="orderNumber"></strong></p>
+      <p>Agora é só enviar pelo WhatsApp para a loja confirmar estoque, frete e mandar o Pix.</p>
+      <a class="btn btn--block" href="#" id="orderWhats" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
+      <p class="muted small" id="orderSaveNote"></p>
+      <button type="button" class="link-btn" data-close>Continuar navegando</button>
+    </div>
+  </aside>
+
+  <!-- ============ POP-UP VIP ============ -->
+  <div class="modal modal--popup" id="vipPopup" role="dialog" aria-modal="true" aria-labelledby="popTitle" hidden>
+    <div class="modal__box popup pattern">
+      <button class="icon-btn modal__close modal__close--light" type="button" data-close aria-label="Fechar">✕</button>
+      <p class="label label--light">✦ Lista VIP</p>
+      <h3 class="popup__title" id="popTitle">Antes de ir…</h3>
+      <p>Entre na lista VIP e veja o catálogo antes de todo mundo.</p>
+      <a class="btn btn--light btn--block" href="#vip" data-popup-go>Quero entrar</a>
+      <button type="button" class="link-btn link-btn--light" data-close>Agora não</button>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+  <script src="config.js?v=1"></script>
+  <script src="script.js?v=1"></script>
+  <script src="shop.js?v=1"></script>
+</body>
+</html>

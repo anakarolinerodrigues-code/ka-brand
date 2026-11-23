@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="p" width="160" height="160" patternUnits="userSpaceOnUse">
+      <text x="18" y="60" font-family="Georgia, serif" font-size="40" fill="#D99BAA" fill-opacity=".09">KA</text>
+      <text x="98" y="140" font-family="Georgia, serif" font-size="40" fill="#D99BAA" fill-opacity=".09">KA</text>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#6E1F31"/>
+  <rect width="1200" height="630" fill="url(#p)"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#D99BAA" stroke-opacity=".5" stroke-width="1.5"/>
+  <text x="600" y="330" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="230" font-weight="500" fill="#D99BAA">KA</text>
+  <text x="612" y="390" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="30" letter-spacing="24" fill="#FBF1EE">BRAND</text>
+  <text x="600" y="480" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-size="54" fill="#F7CAD6">Ouse brilhar.</text>
+  <text x="600" y="550" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="20" letter-spacing="6" fill="#D99BAA">PRÉ-VENDA ✦ @KABRANDRR</text>
+</svg>
