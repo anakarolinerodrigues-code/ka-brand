@@ -14,8 +14,8 @@
 window.KA = {
   /* ---------- CONTATOS (TROQUE PELOS OFICIAIS) ---------- */
   // WhatsApp com 55 + DDD + número, só números. Ex.: 5595991234567
-  whatsapp: "5595900000000",
-  email: "contato@kabrand.com.br",
+  whatsapp: "5595991723414",
+  email: "anakarolinerodrigues1810@gmail.com",
   instagram: "kabrandrr", // sem o @
   cidade: "Boa Vista/RR",
   cnpj: "69.857.792/0001-11",
