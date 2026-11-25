@@ -1,0 +1,31 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500&display=block" rel="stylesheet">
+<style>
+:root{--marsala:#6E1F31;--vinho:#4A1421;--rosa:#D99BAA;--bebe:#F7CAD6;--off:#FBF1EE}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent}
+.card{width:378px;height:378px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.front{background:var(--marsala);color:var(--off)}
+.front::before,.bag::before{content:"";position:absolute;inset:0;opacity:.10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cg fill='%23D99BAA' font-family='Georgia,serif' font-size='22'%3E%3Ctext x='8' y='32'%3EKA%3C/text%3E%3Ctext x='52' y='78'%3EKA%3C/text%3E%3C/g%3E%3C/svg%3E")}
+.front .t{position:relative;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:54px;line-height:1}
+.front .s{position:relative;font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--rosa);margin-top:16px}
+.back{background:var(--off);color:var(--vinho);padding:36px;border:1px solid #e8d8d2}
+.back .ka{font-family:"Cormorant Garamond",serif;font-size:56px;color:var(--marsala);line-height:.9}
+.back .br{font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.5em;padding-left:.5em;margin-top:4px}
+.back p{font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.35;margin:20px 0 16px}
+.back .at{font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.2em;color:var(--marsala)}
+.bag{width:1050px;height:900px;background:var(--marsala);color:var(--rosa);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.bag .ka{position:relative;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:330px;line-height:.85}
+.bag .br{position:relative;font-family:Montserrat,sans-serif;font-size:40px;letter-spacing:.5em;padding-left:.5em;color:var(--off);margin-top:24px}
+.bag .sl{position:relative;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:46px;color:var(--bebe);margin-top:44px}
+.bag .at{position:absolute;bottom:56px;font-family:Montserrat,sans-serif;font-size:24px;letter-spacing:.25em;color:var(--rosa)}
+.seal{width:500px;height:500px;border-radius:50%;background:var(--marsala);position:relative;display:grid;place-items:center}
+.seal svg{position:absolute;inset:0}
+.seal text{fill:var(--rosa);font-family:Montserrat,sans-serif;font-size:31px;letter-spacing:6px}
+.seal b{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:150px;color:var(--rosa);line-height:1}
+</style></head><body>
+<div id="frente" class="card front"><div class="t">Obrigada</div><div class="t" style="font-size:30px;margin-top:10px">por ousar brilhar ✦</div><div class="s">KA Brand</div></div>
+<div id="verso" class="card back"><div class="ka">KA</div><div class="br">BRAND</div><p>Esta peça foi escolhida com carinho para você. Use, brilhe e marque a gente.</p><div class="at">@KABRANDRR</div></div>
+<div id="sacola" class="bag"><div class="ka">KA</div><div class="br">BRAND</div><div class="sl">Ouse brilhar.</div><div class="at">@KABRANDRR</div></div>
+<div id="selo" class="seal"><svg viewBox="0 0 500 500"><defs><path id="c" d="M250,250 m-205,0 a205,205 0 1,1 410,0 a205,205 0 1,1 -410,0"/></defs><text><textPath href="#c" textLength="1270" lengthAdjust="spacing">BRAND ✦ OUSE BRILHAR ✦ @KABRANDRR ✦</textPath></text></svg><b>KA</b></div>
+</body></html>
