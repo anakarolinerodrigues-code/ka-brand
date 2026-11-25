@@ -1,0 +1,5 @@
+{
+  "_obs": "Cores e fontes provisórias. Substituir pelas da KA Brand quando a Ana enviar.",
+  "cores": { "primaria": "#6E1E2B", "destaque": "#F2C4C8", "texto": "#FFFFFF", "chip": "rgba(40,20,22,0.85)" },
+  "fontes": { "forte": "DejaVu Sans", "elegante": "DejaVu Serif" }
+}
