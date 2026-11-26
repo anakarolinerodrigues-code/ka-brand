@@ -52,6 +52,8 @@ if P.get("cor", "auto") == "auto":  # balanço de branco "gray world" + leve con
     vf_cor = f"colorchannelmixer=rr={g[0]:.3f}:gg={g[1]:.3f}:bb={g[2]:.3f},eq=contrast=1.08:saturation=1.08,"
 elif P.get("cor") not in (None, "nenhuma"):
     vf_cor = P["cor"] + ","  # filtro ffmpeg livre, ex.: "lut3d=marca.cube"
+LOOKS = {"quente": "colorbalance=rs=0.05:gs=0.0:bs=-0.05:rm=0.04:gm=-0.01:bm=-0.03,eq=saturation=1.12:gamma=1.03,"}
+vf_cor += LOOKS.get(P.get("look"), (P["look"] + ",") if P.get("look") else "")
 af = "afftdn=nf=-25," if P.get("reducao_ruido", True) else ""
 # um trecho por vez (vídeos 4K/HEVC estouram a memória num filtro único), depois concatena
 vf = (f"{vf_cor}setpts=PTS/{vel},scale={LARG}:{ALT}:force_original_aspect_ratio=increase,"

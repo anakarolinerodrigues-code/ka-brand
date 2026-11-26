@@ -116,6 +116,36 @@ o texto na tela é pouco e "de caderno". Efeitos próprios desse estilo:
 - Ritmo: troque de cena a cada frase da narração; cada etapa ("chegou", "catalogar",
   "fotos", "site", "provador") ganha um texto à mão ou uma nota.
 
+### Estilo "construindo a minha loja" (série em episódios) — o preferido da Ana
+
+Referência: série "episódio 01 de construindo a ...". Gancho falado no 1º segundo, cartão de
+episódio, narração contando a história, cortes de 1–2 s, cor quente, frases-chave grandes e
+rosa com brilhinhos, frase emocional em serifa com uma palavra em itálico, lente "olho mágico"
+nos closes e, no fim, gancho para o próximo episódio.
+
+```json
+{"look": "quente"},
+{"tipo": "frase", "t": 0.1, "dur": 1.9, "texto": "chegou a 1ª\nremessa!", "y": 0.3, "tamanho": 0.13},
+{"tipo": "episodio", "t": 2.0, "dur": 2.0, "sub": "episódio 02 de", "texto": "abrindo a\nKA Brand"},
+{"tipo": "frase", "t": 30, "dur": 2.8, "texto": "a última é a\n*minha favorita*", "estilo": "elegante", "brilhos": false},
+{"tipo": "lente", "t": 12, "dur": 3.5}
+```
+
+- `frase`: Fredoka rosa com brilho (padrão) ou `estilo: "elegante"` (Cormorant); `*palavra*`
+  vira itálico rosa. `brilhos: false` tira as estrelinhas.
+- `episodio`: cartão por cima da cena (fundo marsala translúcido + letra de mão).
+- `lente`: borda preta circular + leve ampliação; coloque as `lente` **no início** da lista de
+  efeitos, senão cobrem os textos daquele trecho.
+- `look`: `"quente"` (rosado/alaranjado) ou um filtro ffmpeg; soma-se ao `cor: "auto"`.
+- Ganchos de retenção a cada ~10 s: "fica até o final 👀", "espera a próxima…",
+  "e ainda tem mais!", "a última é a minha favorita" (cumpra a promessa!), e no fim
+  "no próximo episódio… 👀".
+- Reações coloridas (`texto`, tamanho 0.075–0.11, cores rosa #FF5C93 / dourado #F7C948 /
+  rosé #F2C4C8 com contorno marsala), uma por peça, longe do rosto.
+- A Ana coloca os sons em outro app: ao entregar, liste os tempos e o tipo de som
+  (pop nas reações, digitação nas notas, "whoosh" nas transições, brilho/"sparkle" nos
+  ganchos rosa, trilha lo-fi baixinha de fundo).
+
 ## Regras de bom gosto
 
 - **Efeitos sonoros baixinhos**: 0.3–0.45 de volume; nunca alto por cima da fala. Música

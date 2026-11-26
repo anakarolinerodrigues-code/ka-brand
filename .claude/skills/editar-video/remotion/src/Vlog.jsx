@@ -6,6 +6,9 @@ export const Fontes = () => (
   <style>{`
     @font-face{font-family:'KA Mao';src:url('${staticFile('fontes/Caveat.ttf')}')}
     @font-face{font-family:'KA UI';src:url('${staticFile('fontes/Inter.ttf')}')}
+    @font-face{font-family:'KA Redonda';src:url('${staticFile('fontes/Fredoka.ttf')}')}
+    @font-face{font-family:'KA Serif';src:url('${staticFile('fontes/Cormorant.ttf')}')}
+    @font-face{font-family:'KA Serif';font-style:italic;src:url('${staticFile('fontes/Cormorant-Italic.ttf')}')}
   `}</style>
 );
 
@@ -133,4 +136,65 @@ export const Gancho = ({e, marca}) => {
       ))}
     </div>
   );
+};
+
+// ---------- estilo "construindo a minha loja": frase rosa arredondada com brilhinhos ----------
+const Brilho = ({x, y, s, f, i}) => {
+  const k = 0.6 + 0.4 * Math.abs(Math.sin(f / 7 + i * 1.7));
+  return <svg viewBox="-10 -10 20 20" style={{position: 'absolute', left: x, top: y, width: s, height: s, transform: `translate(-50%,-50%) scale(${k}) rotate(${f * 2 + i * 40}deg)`}}>
+    <path d="M0-10 C1-2 2-1 10 0 C2 1 1 2 0 10 C-1 2 -2 1 -10 0 C-2-1 -1-2 0-10Z" fill={i % 2 ? '#FFFFFF' : '#FFD6E0'} style={{filter: 'drop-shadow(0 0 6px rgba(255,190,210,0.9))'}}/>
+  </svg>;
+};
+export const Frase = ({e, marca}) => {
+  const frame = useCurrentFrame(); const {fps, width, height, durationInFrames} = useVideoConfig();
+  const s = spring({frame, fps, config: {damping: 11, stiffness: 170}});
+  const fs = (e.tamanho || 0.11) * width;
+  const linhas = String(e.texto).split('\n');
+  const cx = (e.x ?? 0.5) * width, cy = (e.y ?? 0.45) * height;
+  const elegante = e.estilo === 'elegante';
+  const brilhos = e.brilhos === false ? [] : [[-0.42, -0.5], [0.45, -0.35], [-0.38, 0.55], [0.4, 0.6]];
+  return (
+    <div style={{position: 'absolute', inset: 0, opacity: Math.min(1, s * 1.4) * saida(frame, durationInFrames)}}>
+      <div style={{position: 'absolute', left: cx, top: cy, transform: `translate(-50%,-50%) scale(${0.7 + 0.3 * s})`, textAlign: 'center', whiteSpace: 'nowrap'}}>
+        {linhas.map((l, i) => (
+          <div key={i} style={{fontFamily: elegante ? "'KA Serif', serif" : "'KA Redonda', sans-serif", fontWeight: elegante ? 500 : 700,
+            fontSize: fs, lineHeight: elegante ? 0.95 : 0.92, letterSpacing: elegante ? 0 : -1, color: e.cor || (elegante ? '#FFF6F3' : '#FFC9D6'),
+            textShadow: elegante ? '0 2px 14px rgba(0,0,0,0.35)' : '0 0 10px rgba(255,255,255,0.75), 0 0 26px rgba(255,150,180,0.65), 0 3px 10px rgba(0,0,0,0.25)'}}>
+            {l.split(/(\*[^*]+\*)/).map((p, j) => p.startsWith('*')
+              ? <span key={j} style={{fontFamily: "'KA Serif', serif", fontStyle: 'italic', fontWeight: 600, color: e.cor_destaque || '#FFB3C7'}}>{p.slice(1, -1)}</span>
+              : <span key={j}>{p}</span>)}
+          </div>
+        ))}
+        {brilhos.map(([bx, by], i) => <Brilho key={i} i={i} f={frame} s={fs * (i % 2 ? 0.45 : 0.6)} x={`${50 + bx * 100}%`} y={`${50 + by * 100}%`}/>)}
+      </div>
+    </div>
+  );
+};
+
+// ---------- cartão de episódio ("episódio 02 de / abrindo a KA Brand") ----------
+export const Episodio = ({e, marca}) => {
+  const frame = useCurrentFrame(); const {fps, width, height, durationInFrames} = useVideoConfig();
+  const cores = marca.cores || {};
+  const s = spring({frame, fps, config: {damping: 14}});
+  const s2 = spring({frame: frame - 6, fps, config: {damping: 12}});
+  return (
+    <div style={{position: 'absolute', inset: 0, opacity: saida(frame, durationInFrames, 8)}}>
+      <div style={{position: 'absolute', inset: 0, background: `radial-gradient(ellipse at center, ${e.fundo || 'rgba(110,30,43,0.55)'} 0%, rgba(40,10,15,0.75) 100%)`, opacity: s}}/>
+      <div style={{position: 'absolute', left: 0, right: 0, top: (e.y ?? 0.42) * height, textAlign: 'center', transform: 'translateY(-50%)'}}>
+        <div style={{fontFamily: "'KA Mao', cursive", fontWeight: 600, fontSize: width * 0.065, color: cores.destaque || '#F2C4C8', opacity: s, transform: `translateY(${(1 - s) * 20}px)`}}>{e.sub || 'episódio 02 de'}</div>
+        <div style={{fontFamily: "'KA Mao', cursive", fontWeight: 700, fontSize: width * 0.13, lineHeight: 0.95, color: '#FFE3EA', whiteSpace: 'pre',
+          WebkitTextStroke: `${width * 0.004}px ${cores.primaria || '#6E1E2B'}`, textShadow: `0 ${width * 0.008}px 0 ${cores.primaria || '#6E1E2B'}`,
+          transform: `scale(${0.6 + 0.4 * s2}) rotate(-3deg)`, opacity: s2}}>{e.texto}</div>
+      </div>
+    </div>
+  );
+};
+
+// ---------- lente "olho mágico" para closes de detalhe ----------
+export const Lente = ({e}) => {
+  const frame = useCurrentFrame(); const {durationInFrames} = useVideoConfig();
+  const k = interpolate(frame, [0, 5, durationInFrames - 5, durationInFrames], [0, 1, 1, 0], clamp);
+  const r = e.raio || 46;
+  return <div style={{position: 'absolute', inset: 0, opacity: k,
+    background: `radial-gradient(circle at 50% 48%, rgba(0,0,0,0) ${r - 8}%, rgba(0,0,0,0.55) ${r - 2}%, rgba(0,0,0,0.97) ${r + 3}%, #000 ${r + 8}%)`}}/>;
 };

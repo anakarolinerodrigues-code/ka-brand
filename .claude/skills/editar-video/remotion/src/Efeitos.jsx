@@ -1,4 +1,4 @@
-import {Nota, Manuscrito, Titulo, Gancho} from './Vlog';
+import {Nota, Manuscrito, Titulo, Gancho, Frase, Episodio, Lente} from './Vlog';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, spring, interpolate, Easing} from 'remotion';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'};
@@ -8,6 +8,9 @@ export const camera = (p, t, W, H) => {
   const c = {scale: 1, tx: 0, ty: 0, rot: 0, blur: 0, ox: 0.5, oy: 0.4};
   for (const e of p.efeitos || []) {
     const dt = t - e.t, dur = e.dur || 1;
+    if (e.tipo === 'lente' && dt >= 0 && dt <= dur) {
+      c.scale *= 1.18 + 0.04 * Math.sin(dt * 2);
+    }
     if (e.tipo === 'zoom' && dt >= 0 && dt <= dur + (e.segurar || 0)) {
       const k = interpolate(dt, [0, dur], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
       c.scale *= (e.de || 1) + ((e.para || 1.35) - (e.de || 1)) * k;
@@ -172,6 +175,9 @@ export const Efeito = ({e, marca}) => {
     case 'manuscrito': return <Manuscrito e={e} marca={marca}/>;
     case 'titulo': return <Titulo e={e} marca={marca}/>;
     case 'gancho': return <Gancho e={e} marca={marca}/>;
+    case 'frase': return <Frase e={e} marca={marca}/>;
+    case 'episodio': return <Episodio e={e} marca={marca}/>;
+    case 'lente': return <Lente e={e}/>;
     default: return null; // zoom, tremor e transicao agem na câmera
   }
 };
