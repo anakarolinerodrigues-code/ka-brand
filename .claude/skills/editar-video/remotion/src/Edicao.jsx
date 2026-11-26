@@ -1,6 +1,7 @@
 import {AbsoluteFill, OffthreadVideo, Audio, Sequence, Freeze, staticFile, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
 import {Legendas} from './Legendas';
 import {Efeito, camera} from './Efeitos';
+import {Fontes} from './Vlog';
 
 const Som = ({s, fps}) => {
   const ini = Math.round(s.t * fps);
@@ -30,6 +31,7 @@ export const Edicao = (p) => {
 
   return (
     <AbsoluteFill style={{background: '#000', overflow: 'hidden'}}>
+      <Fontes/>
       <AbsoluteFill style={{
         transformOrigin: `${cam.ox * 100}% ${cam.oy * 100}%`,
         transform: `translate(${cam.tx}px, ${cam.ty}px) scale(${cam.scale}) rotate(${cam.rot}deg)`,
@@ -37,7 +39,7 @@ export const Edicao = (p) => {
       }}>
         {congelado
           ? <Freeze frame={fzF - 1}><OffthreadVideo src={src} muted/></Freeze>
-          : <OffthreadVideo src={src}/>}
+          : <OffthreadVideo src={src} volume={p.volume_original ?? 1}/>}
       </AbsoluteFill>
       {congelado && fz.vinheta !== false && (
         <AbsoluteFill style={{background: 'radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.65) 100%)',

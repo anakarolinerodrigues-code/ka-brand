@@ -108,7 +108,8 @@ for i, s in enumerate(P.get("sons", [])):
 
 marca = json.load(open(os.path.join(K, "marca.json")))
 props = {"fps": FPS, "largura": LARG, "altura": ALT, "duracao": round(total, 3), "video": "job/base.mp4",
-         "palavras": palavras, "legenda": leg, "efeitos": efeitos, "sons": sons, "final_congelado": fz, "marca": marca}
+         "palavras": palavras, "legenda": leg, "efeitos": efeitos, "sons": sons, "final_congelado": fz, "marca": marca,
+         "volume_original": P.get("volume_original", 1)}
 props_path = os.path.join(JOB, "props.json"); json.dump(props, open(props_path, "w"), ensure_ascii=False)
 
 # ---------- 4) render (Remotion) + loudness final ----------

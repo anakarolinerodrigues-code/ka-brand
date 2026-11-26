@@ -1,3 +1,4 @@
+import {Nota, Manuscrito, Titulo} from './Vlog';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, spring, interpolate, Easing} from 'remotion';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'};
@@ -162,6 +163,9 @@ export const Efeito = ({e, marca}) => {
     case 'explosao': return <Explosao e={e}/>;
     case 'lista': return <Lista e={e} marca={marca}/>;
     case 'imagem': return <Imagem e={e}/>;
+    case 'nota': return <Nota e={e} marca={marca}/>;
+    case 'manuscrito': return <Manuscrito e={e} marca={marca}/>;
+    case 'titulo': return <Titulo e={e} marca={marca}/>;
     default: return null; // zoom, tremor e transicao agem na câmera
   }
 };

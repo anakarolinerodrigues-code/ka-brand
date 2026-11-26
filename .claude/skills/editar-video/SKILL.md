@@ -90,6 +90,31 @@ avisa se um tempo cair num trecho cortado. Caminhos relativos ao plano.
   para a "transição pra cima com explosão".
 - `sprite` do voo: `heroi` (super-herói genérico desenhado), um emoji, ou PNG da Ana.
 - Sons: `t_final` = tempo no vídeo final (para depois do congelamento).
+- `volume_original` (0–1, raiz do plano): volume do áudio da câmera. Use 0–0.2 quando houver
+  narração gravada à parte (entra em `sons` com `"t_final": 0`) e trilha de fundo.
+
+### Estilo "vlog de loja" (narração + bastidores)
+
+Referência que a Ana gosta: vlog de lançamento de coleção. Narração em off por cima de cenas
+curtas de bastidor (2–8 s cada), trilha de fundo constante, **sem legenda palavra a palavra**:
+o texto na tela é pouco e "de caderno". Efeitos próprios desse estilo:
+
+```json
+{"tipo": "titulo", "t": 0.2, "dur": 3, "texto": "Vlog de um dia de\nlançamento na minha loja", "y": 0.17},
+{"tipo": "nota", "t": 11, "dur": 5, "estilo": "lembrete", "titulo": "Lembretes",
+ "itens": ["2026 — gerar conexão com a cliente"], "marcar": true, "y": 0.62},
+{"tipo": "nota", "t": 42, "dur": 6, "titulo": "notas", "itens": ["Gerar desejo", "Aproximar o cliente", "Facilitar a compra"], "y": 0.7, "largura": 0.45},
+{"tipo": "manuscrito", "t": 34, "dur": 3, "texto": "Catalogar e vender", "y": 0.2, "circulo": true,
+ "setas": [{"de": [0.25, 0.27], "para": [0.18, 0.4], "curva": 0.3}]}
+```
+
+- `nota`: cartão branco do app Notas/Lembretes, texto digitando (`velocidade` em letras/s);
+  `estilo: "lembrete"` mostra bolinhas e, com `marcar`, risca o item ao terminar.
+- `manuscrito`: letra de mão (Caveat) que se escreve; `circulo` desenha um contorno à mão;
+  `setas` apontam para o que importa (ex.: "Lançamento" → caixa). `\n` quebra linha.
+- `titulo`: gancho dos primeiros 3 s, branco e negrito.
+- Ritmo: troque de cena a cada frase da narração; cada etapa ("chegou", "catalogar",
+  "fotos", "site", "provador") ganha um texto à mão ou uma nota.
 
 ## Regras de bom gosto
 
