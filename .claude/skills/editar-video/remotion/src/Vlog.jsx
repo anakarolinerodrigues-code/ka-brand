@@ -113,3 +113,24 @@ export const Titulo = ({e, marca}) => {
     </div>
   );
 };
+
+// ---------- gancho: frase de retenção numa caixinha (marsala/rosé por padrão) ----------
+export const Gancho = ({e, marca}) => {
+  const frame = useCurrentFrame(); const {fps, width, height, durationInFrames} = useVideoConfig();
+  const cores = marca.cores || {};
+  const s = spring({frame, fps, config: {damping: 10, stiffness: 180}});
+  const balanco = Math.sin(frame / 6) * 1.2;
+  const linhas = String(e.texto).split('\n');
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, top: (e.y ?? 0.16) * height, display: 'flex', flexDirection: 'column', alignItems: 'center',
+      transform: `scale(${0.6 + 0.4 * s}) rotate(${(e.rotacao ?? -2) + balanco}deg)`, opacity: Math.min(1, s * 1.5) * saida(frame, durationInFrames)}}>
+      {e.sub && <div style={{fontFamily: "'KA UI', sans-serif", fontWeight: 600, fontSize: width * 0.03, letterSpacing: 4, textTransform: 'uppercase',
+        color: e.cor_sub || cores.destaque || '#F2C4C8', textShadow: '0 2px 8px rgba(0,0,0,0.5)', marginBottom: width * 0.012}}>{e.sub}</div>}
+      {linhas.map((l, i) => (
+        <div key={i} style={{background: e.fundo || cores.primaria || '#6E1E2B', color: e.cor || '#FFFFFF', fontFamily: "'KA UI', sans-serif",
+          fontWeight: 800, fontSize: (e.tamanho || 0.058) * width, lineHeight: 1.2, padding: `${width * 0.008}px ${width * 0.03}px`,
+          borderRadius: width * 0.02, marginTop: i ? -width * 0.004 : 0, boxShadow: '0 10px 30px rgba(0,0,0,0.3)', whiteSpace: 'nowrap'}}>{l}</div>
+      ))}
+    </div>
+  );
+};

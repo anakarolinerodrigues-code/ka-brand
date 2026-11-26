@@ -1,4 +1,4 @@
-import {Nota, Manuscrito, Titulo} from './Vlog';
+import {Nota, Manuscrito, Titulo, Gancho} from './Vlog';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame, useVideoConfig, spring, interpolate, Easing} from 'remotion';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'};
@@ -102,7 +102,10 @@ const Texto = ({e, marca}) => {
       color: e.cor || '#fff', whiteSpace: 'nowrap', letterSpacing: 2,
       WebkitTextStroke: `${width * 0.006}px ${e.contorno || (marca.cores || {}).primaria || '#6E1E2B'}`,
       textShadow: `0 ${width * 0.012}px 0 ${e.contorno || (marca.cores || {}).primaria || '#6E1E2B'}, 0 10px 30px rgba(0,0,0,0.5)`}}>
-      {e.texto}
+      {String(e.texto).split(/(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)/u).map((parte, i) =>
+        /\p{Extended_Pictographic}/u.test(parte)
+          ? <span key={i} style={{WebkitTextStroke: 0, textShadow: 'none', fontFamily: 'Noto Color Emoji'}}>{parte}</span>
+          : <span key={i}>{parte}</span>)}
     </div>
   );
 };
@@ -168,6 +171,7 @@ export const Efeito = ({e, marca}) => {
     case 'nota': return <Nota e={e} marca={marca}/>;
     case 'manuscrito': return <Manuscrito e={e} marca={marca}/>;
     case 'titulo': return <Titulo e={e} marca={marca}/>;
+    case 'gancho': return <Gancho e={e} marca={marca}/>;
     default: return null; // zoom, tremor e transicao agem na câmera
   }
 };
