@@ -21,10 +21,12 @@ export const camera = (p, t, W, H) => {
       const meia = (e.dur || 0.4) / 2, u = (t - e.t) / meia; // u em [-1, 1]
       if (u >= -1 && u <= 1) {
         const dist = e.direcao === 'cima' ? H : W;
-        const off = u < 0 ? -dist * Math.pow(u + 1, 2.2) : dist * Math.pow(1 - u, 2.2);
+        // desliza pouco e amplia o bastante para nunca mostrar fundo preto
+        const pico = 1 - Math.abs(u);
+        const off = (u < 0 ? -1 : 1) * dist * 0.12 * pico;
         if (e.direcao === 'cima') c.ty += off; else c.tx += (e.direcao === 'direita' ? -off : off);
-        c.blur += 28 * (1 - Math.abs(u));
-        if (e.zoom !== false) c.scale *= 1 + 0.15 * (1 - Math.abs(u));
+        c.blur += 26 * pico;
+        c.scale *= 1 + 0.32 * pico;
       }
     }
   }
