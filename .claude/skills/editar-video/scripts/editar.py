@@ -53,14 +53,24 @@ if P.get("cor", "auto") == "auto":  # balanço de branco "gray world" + leve con
 elif P.get("cor") not in (None, "nenhuma"):
     vf_cor = P["cor"] + ","  # filtro ffmpeg livre, ex.: "lut3d=marca.cube"
 af = "afftdn=nf=-25," if P.get("reducao_ruido", True) else ""
-n = len(cortes)
-fc = "".join(f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS[v{i}];[0:a]atrim={a}:{b},asetpts=PTS-STARTPTS[a{i}];" for i, (a, b) in enumerate(cortes))
-fc += "".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[cv][ca];"
-fc += (f"[cv]{vf_cor}setpts=PTS/{vel},scale={LARG}:{ALT}:force_original_aspect_ratio=increase,crop={LARG}:{ALT},fps={FPS},format=yuv420p[ov];"
-       f"[ca]{af}atempo={vel},loudnorm=I=-16:TP=-1.5,aresample=48000[oa]")
+# um trecho por vez (vídeos 4K/HEVC estouram a memória num filtro único), depois concatena
+vf = (f"{vf_cor}setpts=PTS/{vel},scale={LARG}:{ALT}:force_original_aspect_ratio=increase,"
+      f"crop={LARG}:{ALT},fps={FPS},format=yuv420p")
+afl = f"{af}atempo={vel},aresample=48000"
+partes = []
+for i, (a0, b0) in enumerate(cortes):
+    parte = os.path.join(JOB, f"parte_{i:03d}.mp4")
+    run(["ffmpeg", "-y", "-loglevel", "error", "-threads", "2", "-ss", f"{a0}", "-to", f"{b0}", "-i", video,
+         "-vf", vf, "-af", afl, "-c:v", "libx264", "-crf", "16", "-preset", "veryfast", "-c:a", "aac", "-b:a", "192k",
+         "-ar", "48000", "-ac", "2", parte])
+    partes.append(parte)
+lista = os.path.join(JOB, "partes.txt")
+open(lista, "w").write("".join(f"file '{p}'\n" for p in partes))
 base = os.path.join(JOB, "base.mp4")
-run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-filter_complex", fc, "-map", "[ov]", "-map", "[oa]",
-     "-c:v", "libx264", "-crf", "16", "-preset", "veryfast", "-c:a", "aac", "-b:a", "192k", base])
+run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lista,
+     "-c:v", "copy", "-af", "loudnorm=I=-16:TP=-1.5,aresample=48000", "-c:a", "aac", "-b:a", "192k", base])
+for p in partes:
+    os.remove(p)
 
 # ---------- 2) legendas: palavras remapeadas, correções, destaques ----------
 palavras = []
