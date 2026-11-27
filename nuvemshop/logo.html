@@ -5,7 +5,10 @@
 .logo b{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:150px;line-height:.82}
 .logo i{font-style:normal;font-family:Montserrat,sans-serif;font-size:24px;letter-spacing:.55em;padding-left:.55em;margin-top:14px}
 .claro b{color:#6E1F31}.claro i{color:#4A1421}
-.escuro{background:#6E1F31}.escuro b{color:#D99BAA}.escuro i{color:#FBF1EE}
+.escuro{background:#6E1F31;position:relative;overflow:hidden}
+.escuro::before{content:"";position:absolute;inset:0;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='%23D99BAA' font-family='Georgia,serif' font-size='15'%3E%3Ctext x='6' y='22'%3EKA%3C/text%3E%3Ctext x='38' y='54'%3EKA%3C/text%3E%3C/g%3E%3C/svg%3E")}
+.escuro::before{-webkit-mask-image:radial-gradient(ellipse 150px 105px at 50% 50%,transparent 70%,#000 100%);mask-image:radial-gradient(ellipse 150px 105px at 50% 50%,transparent 70%,#000 100%)}
+.escuro b,.escuro i{position:relative}.escuro b{color:#D99BAA}.escuro i{color:#FBF1EE}
 .fav{width:130px;height:130px;background:#6E1F31;display:grid;place-items:center}
 .fav b{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:84px;color:#D99BAA;line-height:1;margin-top:-6px}
 </style></head><body>
