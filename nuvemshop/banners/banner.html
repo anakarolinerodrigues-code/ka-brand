@@ -1,0 +1,57 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500&display=block" rel="stylesheet">
+<style>
+:root{--marsala:#6E1F31;--vinho:#4A1421;--rosa:#D99BAA;--bebe:#F7CAD6;--off:#FBF1EE;--candy:#E8588F}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:var(--w);height:var(--h);overflow:hidden}
+.b{width:100%;height:100%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.pat::before{content:"";position:absolute;inset:0;opacity:.11;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%23D99BAA' font-family='Georgia,serif' font-size='36'%3E%3Ctext x='16' y='54'%3EKA%3C/text%3E%3Ctext x='92' y='130'%3EKA%3C/text%3E%3C/g%3E%3C/svg%3E")}
+.b>*{position:relative}
+.lbl{font-family:Montserrat,sans-serif;font-weight:500;font-size:calc(var(--u)*1.5);letter-spacing:.35em;text-transform:uppercase}
+.big{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:.95}
+.it{font-family:"Cormorant Garamond",serif;font-style:italic}
+.btn{display:inline-block;font-family:Montserrat,sans-serif;font-weight:500;font-size:calc(var(--u)*1.35);letter-spacing:.28em;text-transform:uppercase;padding:calc(var(--u)*1.6) calc(var(--u)*3.4);margin-top:calc(var(--u)*3.6)}
+.line{width:calc(var(--u)*6);height:1px;margin:calc(var(--u)*2.4) auto}
+/* 1 */
+.b1{background:var(--marsala);color:var(--off)}
+.b1 .ka{font-size:calc(var(--u)*17);color:var(--rosa)}
+.b1 .br{font-family:Montserrat,sans-serif;font-size:calc(var(--u)*1.9);letter-spacing:.6em;padding-left:.6em;margin-top:calc(var(--u)*1.2)}
+.b1 .it{font-size:calc(var(--u)*5.2);color:var(--bebe);margin-top:calc(var(--u)*2.6)}
+.b1 .btn{background:var(--off);color:var(--marsala)}
+/* 2 */
+.b2{background:var(--bebe);color:var(--vinho)}
+.b2 .lbl{color:var(--marsala)}
+.b2 .big{font-size:calc(var(--u)*10);margin-top:calc(var(--u)*1.6)}
+.b2 .it{font-size:calc(var(--u)*4.2);color:var(--marsala);margin-top:calc(var(--u)*1.4)}
+.b2 .line{background:var(--marsala)}
+.b2 .btn{background:var(--marsala);color:var(--off)}
+.b2 .star{position:absolute;color:var(--candy);font-size:calc(var(--u)*3)}
+.narrow .b2 .big{font-size:calc(var(--u)*8.2)}
+.narrow .b3 .big{font-size:calc(var(--u)*7.4)}
+.narrow .b3 .sm{font-size:calc(var(--u)*1.6);max-width:80%}
+/* 3 */
+.b3{background:var(--off);color:var(--vinho)}
+.b3 .lbl{color:var(--marsala)}
+.b3 .big{font-size:calc(var(--u)*8.4);margin-top:calc(var(--u)*1.6)}
+.b3 .big em{font-style:italic;color:var(--marsala)}
+.b3 .line{background:var(--marsala)}
+.b3 .sm{font-family:Montserrat,sans-serif;font-weight:300;font-size:calc(var(--u)*1.9);letter-spacing:.06em}
+.b3 .btn{border:1px solid var(--marsala);color:var(--marsala)}
+.seal{position:absolute;width:calc(var(--u)*22);height:calc(var(--u)*22)}
+.seal text{font-family:Montserrat,sans-serif;font-size:13.5px;letter-spacing:3px}
+.frame{position:absolute;inset:calc(var(--u)*2.2);border:1px solid currentColor;opacity:.35;pointer-events:none}
+</style></head><body>
+<div id="v"></div>
+<script>
+const q=new URLSearchParams(location.search), n=q.get('n'), w=+q.get('w'), h=+q.get('h');
+const u = w/h>1.4 ? h/900*13 : w/1080*17; // unidade base
+document.documentElement.style.cssText=`--w:${w}px;--h:${h}px;--u:${u}px`;
+const seal=(c,pos)=>`<svg class="seal" style="${pos}" viewBox="0 0 200 200"><defs><path id="s" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text fill="${c}"><textPath href="#s" textLength="485" lengthAdjust="spacing">BRAND ✦ OUSE BRILHAR ✦ @KABRANDRR ✦</textPath></text><text x="100" y="114" text-anchor="middle" fill="${c}" style="font-family:'Cormorant Garamond',serif;font-size:40px;letter-spacing:0">KA</text></svg>`;
+const wide=w/h>1.4; if(!wide) document.documentElement.classList.add('narrow');
+const B={
+1:`<div class="b b1 pat"><div class="frame"></div><div class="big ka">KA</div><div class="br">BRAND</div><div class="it">Ouse brilhar.</div><div class="btn">Ver coleção</div></div>`,
+2:`<div class="b b2"><div class="frame"></div><div class="lbl">Nova coleção</div><div class="big">Peças limitadas</div><div class="line"></div><div class="it">Garanta a sua antes que acabe.</div><div class="btn">Comprar agora</div>${seal('#6E1F31', wide?'right:6%;bottom:9%':'right:6%;bottom:4%')}</div>`,
+3:`<div class="b b3"><div class="frame"></div><div class="lbl">KA Brand ✦ Boa Vista · RR</div><div class="big">De Boa Vista<br><em>para todo o Brasil</em></div><div class="line"></div><div class="sm">Entregas em breve em Roraima e envio para todo o país.</div>${seal('#6E1F31', wide?'left:6%;bottom:9%':'left:6%;bottom:4%')}</div>`
+};
+document.getElementById('v').outerHTML=B[n];
+</script></body></html>
