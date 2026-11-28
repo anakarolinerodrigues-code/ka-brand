@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@500&display=block" rel="stylesheet">
+<style>*{margin:0;padding:0}html,body{width:1080px;height:1350px;overflow:hidden}
+.c{width:1080px;height:1350px;position:relative;overflow:hidden}
+.c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g{position:absolute;inset:0;background:linear-gradient(0deg,rgba(74,20,33,.78),rgba(74,20,33,.25) 45%,rgba(74,20,33,.05))}
+.t{position:absolute;left:0;right:0;bottom:110px;text-align:center;color:#FBF1EE;text-shadow:0 2px 20px rgba(40,10,18,.4)}
+.k{font-family:Montserrat,sans-serif;font-weight:500;font-size:30px;letter-spacing:.34em;text-transform:uppercase;color:#F7CAD6}
+.h{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:170px;line-height:1;margin-top:6px}
+.i{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:54px;margin-top:6px}
+</style></head><body><div id="v"></div><script>
+const n=new URLSearchParams(location.search).get('n');
+const D={corsets:['../categorias/fotos/corsets.jpg','50% 50%','Dia a dia','Corsets','do dia à noite'],blusas:['../categorias/fotos/blusas.jpg','60% 50%','Dia a dia','Blusas','conforto com charme']}[n];
+document.getElementById('v').outerHTML=`<div class="c"><img src="${D[0]}" style="object-position:${D[1]}"><div class="g"></div><div class="t"><div class="k">${D[2]}</div><div class="h">${D[3]}</div><div class="i">${D[4]}</div></div></div>`;
+</script></body></html>
