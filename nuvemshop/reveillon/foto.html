@@ -1,0 +1,50 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow:hidden;background:#000}
+.b{position:relative;overflow:hidden}
+.bg{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(28px) brightness(.85)}
+.ph{position:absolute;top:0;bottom:0;background-size:cover}
+.fade{position:absolute;inset:0}
+.txt{position:absolute;color:#FBF1EE;text-shadow:0 2px 18px rgba(40,10,18,.45)}
+.k{font-family:Montserrat,sans-serif;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+.t{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:.9}
+.y{font-family:Montserrat,sans-serif;font-weight:500;letter-spacing:.5em}
+.it{font-family:"Cormorant Garamond",serif;font-style:italic}
+svg.sw{display:block}
+</style></head><body><div id="v"></div>
+<script>
+const q=new URLSearchParams(location.search), n=q.get('n'), w=+q.get('w'), h=+q.get('h'), wide=w/h>1.4;
+document.documentElement.style.cssText=`width:${w}px;height:${h}px`;
+const F={1:['foto3-franjas-praia.jpg','40% 50%'],2:['foto2-renda-detalhe.jpg','50% 40%'],3:['foto1-conjunto-amarelo.jpg','45% 35%']}[n];
+const sw=(wd)=>`<svg class="sw" width="${wd}" height="${wd*.08}" viewBox="0 0 300 24"><path d="M4 16 C80 6, 200 4, 296 10 M30 20 C110 13, 210 12, 280 15" fill="none" stroke="#FBF1EE" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+const u=wide?h/900:w/1080*0.82;
+const T={
+1:{k:'Coleção',t:'Réveillon',y:'2027',it:'Exclusiva KA Brand'},
+2:{k:'Réveillon KA',t:'Vista-se<br>de luz',y:'',it:'Peças limitadas'},
+3:{k:'Nova coleção',t:'Ouse<br>brilhar',y:'',it:'na virada do ano'}}[n];
+const block=`<div class="k" style="font-size:${22*u}px">${T.k}</div>
+<div class="t" style="font-size:${(T.t.includes('<br>')?150:170)*u}px;margin-top:${10*u}px">${T.t}</div>
+${T.y?`<div class="y" style="font-size:${40*u}px;margin-top:${12*u}px">${T.y}</div>`:''}
+<div class="it" style="font-size:${38*u}px;margin-top:${14*u}px">${T.it}</div>
+<div style="margin-top:${14*u}px">${sw(240*u)}</div>`;
+let html;
+if(wide){
+  // computador: fundo desfocado da própria foto + foto nítida de um lado, texto do outro
+  const side = n==2 ? 'left' : 'right'; const pw = Math.round(h*0.75);
+  const phPos = side==='right' ? `right:${w*0.14}px` : `left:${w*0.14}px`;
+  const txtPos = side==='right' ? `left:${w*0.12}px;top:50%;transform:translateY(-50%);text-align:left` : `right:${w*0.12}px;top:50%;transform:translateY(-50%);text-align:right`;
+  html=`<div class="b" style="width:${w}px;height:${h}px"><div class="bg" style="background-image:url(fotos/${F[0]})"></div>
+  <div class="fade" style="background:linear-gradient(${side==='right'?'90deg':'270deg'},rgba(74,20,33,.55),rgba(74,20,33,.15) 60%,transparent)"></div>
+  <div class="ph" style="${phPos};width:${pw}px;background-image:url(fotos/${F[0]});background-position:${F[1]};box-shadow:0 0 60px rgba(0,0,0,.35)"></div>
+  <div class="txt" style="${txtPos}">${block.replace('class="sw"', `class="sw" style="${side==='right'?'':'margin-left:auto'}"`)}</div></div>`;
+}else{
+  // celular: foto inteira, texto em cima com degradê suave
+  const top = false;
+  html=`<div class="b" style="width:${w}px;height:${h}px"><div class="ph" style="left:0;right:0;background-image:url(fotos/${F[0]});background-position:${F[1]}"></div>
+  <div class="fade" style="background:linear-gradient(${top?'180deg':'0deg'},rgba(74,20,33,.78),rgba(74,20,33,.35) 30%,transparent 50%)"></div>
+  <div class="txt" style="left:0;right:0;${top?'top':'bottom'}:${70*u}px;text-align:center">${block.replace('class="sw"','class="sw" style="margin:0 auto"')}</div></div>`;
+}
+document.getElementById('v').outerHTML=html;
+</script></body></html>
