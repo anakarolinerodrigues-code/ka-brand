@@ -1,0 +1,41 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@300;400;500&display=block" rel="stylesheet">
+<style>
+:root{--marsala:#6E1F31;--vinho:#4A1421;--rosa:#D99BAA;--bebe:#F7CAD6;--off:#FBF1EE}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow:hidden;background:var(--off)}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.lbl{font-family:Montserrat,sans-serif;font-weight:500;letter-spacing:.38em;text-transform:uppercase;color:var(--rosa)}
+.t{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:.95;color:var(--off)}
+.it{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--bebe)}
+.btn{display:inline-block;font-family:Montserrat,sans-serif;font-weight:500;letter-spacing:.28em;text-transform:uppercase;background:var(--off);color:var(--marsala)}
+.panel{background:var(--marsala);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;inset:0;opacity:.10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='%23D99BAA' font-family='Georgia,serif' font-size='30'%3E%3Ctext x='14' y='44'%3EKA%3C/text%3E%3Ctext x='74' y='104'%3EKA%3C/text%3E%3C/g%3E%3C/svg%3E")}
+.panel>*{position:relative}
+.ka{font-family:"Cormorant Garamond",serif;color:var(--rosa);line-height:1}
+/* computador */
+.d{width:1920px;height:900px;display:grid;gap:8px;background:var(--off)}
+.d .panel .lbl{font-size:17px}.d .panel .t{font-size:104px;margin-top:22px}.d .panel .it{font-size:44px;margin-top:20px}.d .btn{font-size:16px;padding:20px 40px;margin-top:44px}.d .ka{font-size:34px;margin-bottom:28px}
+.d1{grid-template-columns:560px 1fr 1fr 1fr}
+.d2{grid-template-columns:1fr 1fr 560px}
+/* celular */
+.m{width:1080px;height:1350px;display:grid;gap:8px;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) 380px minmax(0,1fr)}
+.m>div,.d>div{min-height:0;min-width:0;overflow:hidden}
+.m .ka{font-size:28px;margin-bottom:16px}
+.m .panel{grid-column:1/3}
+.m .panel .lbl{font-size:20px}.m .panel .t{font-size:96px;margin-top:14px}.m .panel .it{font-size:40px;margin-top:12px}
+</style></head><body><div id="v"></div>
+<script>
+const f=n=>`fotos/foto${n}`;
+const P={1:'foto1-conjunto-amarelo.jpg" style="object-position:50% 35%',2:'foto2-renda-detalhe.jpg" style="object-position:50% 45%',3:'foto3-franjas-praia.jpg" style="object-position:38% 50%',4:'foto4-renda-chapeu.jpg" style="object-position:45% 55%'};
+const im=n=>`<div><img src="fotos/${P[n]}"></div>`;
+const T=(a,b,c,btn)=>`<div class="panel"><div class="ka">✦ KA ✦</div><div class="lbl">${a}</div><div class="t">${b}</div><div class="it">${c}</div>${btn?`<div class="btn">${btn}</div>`:''}</div>`;
+const n=new URLSearchParams(location.search).get('n');
+const V={
+d1:`<div class="d d1">${T('Coleção','Réveillon','Comece 2027 brilhando.','Ver coleção')}${im(1)}${im(2)}${im(3)}</div>`,
+d2:`<div class="d d2">${im(4)}${im(3)}${T('Peças limitadas','Vista-se<br>de luz','para a virada que você merece.','Garantir a minha')}</div>`,
+m1:`<div class="m">${im(1)}${im(2)}${T('Coleção','Réveillon','Comece 2027 brilhando.')}${im(3)}${im(4)}</div>`,
+m2:`<div class="m">${im(4)}${im(1)}${T('Peças limitadas','Vista-se de luz','para a virada que você merece.')}${im(2)}${im(3)}</div>`
+};
+document.getElementById('v').outerHTML=V[n];
+</script></body></html>
